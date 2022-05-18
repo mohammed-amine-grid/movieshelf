@@ -1,9 +1,12 @@
 import './App.css';
-
+import LoginRegister  from './pages/LoginRegister/loginRegister';
+import Counter from './features/counter/Counter'
 function App() {
   return (
     <div className="App">
-      hello
+      <div className='login-register-container'>
+      <LoginRegister />
+      </div>
     </div>
   );
 }
