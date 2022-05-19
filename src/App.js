@@ -1,13 +1,27 @@
 import './App.css';
-import LoginRegister  from './pages/LoginRegister/loginRegister';
-import Counter from './features/counter/Counter'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Header from './components/Header';
+import Dashboard from './pages/Dashboard';
+import {ToastContainer} from 'react-toastify'
+
 function App() {
   return (
-    <div className="App">
-      <div className='login-register-container'>
-      <LoginRegister />
-      </div>
-    </div>
+
+    <>
+     <Router>
+        <div className='container'>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+          </Routes>
+        </div>
+      </Router>
+      <ToastContainer />
+    </>
   );
 }
 

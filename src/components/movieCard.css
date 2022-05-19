@@ -1,0 +1,21 @@
+
+
+.card {
+  
+    height: 400px;
+    width: 200px;
+    /* position: absolute;
+    z-index: 1; */
+
+}
+
+
+.img {
+    max-width: 100%;
+    max-height: 50%;
+}
+
+.movie-text-container {
+    color: black;
+}
+

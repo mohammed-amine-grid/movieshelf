@@ -1,0 +1,14 @@
+
+  
+  .search-box {
+   padding: 2rem;
+   font-size: 2rem;
+   display: block;
+  }
+
+.movie-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
