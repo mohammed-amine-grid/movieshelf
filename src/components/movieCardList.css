@@ -1,0 +1,10 @@
+.movie-container {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
+    justify-items: center;
+    align-items: center;
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+
+}

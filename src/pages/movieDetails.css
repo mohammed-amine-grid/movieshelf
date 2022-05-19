@@ -1,0 +1,30 @@
+
+.movie-details-wrapper {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    
+}
+
+.movie-details-trailer {
+    /* position: relative; */
+    height: 400px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+
+
+.movie-details-score-action {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+

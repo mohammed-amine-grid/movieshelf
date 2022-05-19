@@ -4,12 +4,14 @@ import {search, searchMovies} from '../features/searchMovie/searchSlice'
 import MovieCard from '../components/MovieCard';
 import './dashboard.css';
 import {useDebouncedCallback} from 'use-debounce';
-
+import MovieDetails from './MovieDetails';
+import MovieCardList  from '../components/MovieCardList';
 
 const Dashboard = () => {
     const searchInput = useSelector((state) => state.search.searchInput);
     const movies = useSelector((state) => state.search.movies);
     
+    const dispatch = useDispatch();
     const debouncedSearch = useDebouncedCallback((value) => {dispatch(searchMovies(value))}, 1000)
 
     const handleSearch = (event) => {
@@ -17,20 +19,22 @@ const Dashboard = () => {
         debouncedSearch(searchInput);
     }
 
-    const dispatch = useDispatch();
 
     return (
     <div className='dashboard'>
 
-        <input value={searchInput} onChange={handleSearch} placeholder='Search for a movie...' className='search-box' type="text"  />
-        <button>
-            click me
-        </button>
+        {/* <MovieDetails /> */}
 
-        <div className='movie-container'>
-       {movies && movies.map((movie,i) => <p key={i}>{movie.title}</p>)}
-        
-        </div>
+        {/* input-view */}
+        <input value={searchInput} onChange={handleSearch} placeholder='Search for a movie...' className='search-box' type="text"  />
+     
+
+      
+
+       { movies &&
+       
+       <MovieCardList movies={movies} />}
+        {/* </div> */}
     </div>
   )
 }

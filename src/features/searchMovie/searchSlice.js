@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import searchService from "./searchService";
-import { debounce } from "../../utils/debounce";
 
 
 const initialState = {
@@ -36,7 +35,7 @@ export const searchSlice = createSlice({
         .addCase(searchMovies.fulfilled, (state, action) => {
             console.log("success");
             state.movies = action.payload;
-            console.log(state.movies);
+            // console.log(state.movies);
         })
         .addCase(searchMovies.rejected, (state) => {
             console.log("rejected");

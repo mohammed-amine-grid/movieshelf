@@ -1,21 +1,44 @@
 
 
 .card {
-  
-    height: 400px;
-    width: 200px;
-    /* position: absolute;
-    z-index: 1; */
-
+    border-radius: 30px;
+    height: 375px;
+    overflow: hidden;
+    width: 250px;
+    position: relative;
+    color: #fff;
+    background-color: #000;
 }
 
+.card:hover {
+    background-color: transparent;
+}
 
-.img {
+.card-img {
     max-width: 100%;
-    max-height: 50%;
+    max-height: 100%;
+    position: relative;
+    opacity: 0.7;
+    transition: all 0.3s;
+    
 }
 
-.movie-text-container {
-    color: black;
+.card-img:hover {
+transform: scale(1.2);
+
 }
 
+.card-title {
+    position: absolute;
+    bottom:15%;
+    left: 5%;
+    font-size: 1rem;
+    text-align: left;
+    
+}
+
+.card-year {
+    position: absolute;
+    right: 10%;
+    bottom: 2%;
+}

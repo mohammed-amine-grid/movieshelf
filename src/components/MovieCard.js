@@ -1,15 +1,22 @@
 import React from 'react';
 import './movieCard.css';
+import { useSelector, useDispatch } from "react-redux";
+import { selectMovie } from '../features/movieinfo/movieinfoSlice';
 
- const MovieCard = () => {
+
+
+
+
+ const MovieCard = ({movie}) => {
+  const selectedMovie = useSelector((state) => 
+  state.select.movieInfo
+)
+const dispatch = useDispatch();
   return (
-    <div className='card'>
-        <div className='movie-img'>
-            <img className='img' src='https://images.pexels.com/photos/9179973/pexels-photo-9179973.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' />
-        </div>
-        <div className='movie-text-container'>
-            <p>Title eh ?</p>
-        </div>
+    <div onClick={() => dispatch(selectMovie(movie))} className='card'>
+      <img className='card-img' src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
+      <h2 className='card-title'>{movie.title}</h2>
+      <span className='card-year'>{movie.release_date.substring(0, 4)}</span>
     </div>
   )
 }
