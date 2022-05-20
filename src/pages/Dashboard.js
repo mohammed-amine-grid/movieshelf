@@ -12,32 +12,26 @@ import { getGenres } from '../features/movieinfo/movieinfoSlice';
 const Dashboard = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-      console.log('hello');
       dispatch(getGenres())
-    }, []);
+    }, [dispatch]);
 
     const isMovieSelected = useSelector((state) => state.select.isMovieSelected);
+    const selectedMovieId = useSelector((state) => state.select.movieId);
 
     const movies = useSelector((state) => state.search.movies);
     
     return (
     <div className='dashboard'>
 
-        { <SearchInput />}
+        <SearchInput />
 
        {!isMovieSelected && movies &&
        <MovieCardList movies={movies} />}
 
 
-        {isMovieSelected && <MovieDetails />}
-
-        {/* input-view */}
-     
+        {isMovieSelected && <MovieDetails id={selectedMovieId} />}
 
         
-
-       
-        {/* </div> */}
     </div>
   )
 }

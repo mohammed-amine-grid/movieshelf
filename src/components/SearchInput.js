@@ -9,12 +9,13 @@ import { reset } from '../features/movieinfo/movieinfoSlice';
     const searchInput = useSelector((state) => state.search.searchInput);
     
     const dispatch = useDispatch();
-    const debouncedSearch = useDebouncedCallback((value) => {dispatch(searchMovies(value))}, 1000)
+    const debouncedSearch = useDebouncedCallback((value) => {dispatch(searchMovies(value))}, 1200);
+    const debouncedReset = useDebouncedCallback(() => {dispatch(reset())}, 1200);
 
 
     const handleSearch = (event) => {
         dispatch(search(event.target.value));
-        dispatch(reset());
+        debouncedReset();
         debouncedSearch(searchInput);
     }
   

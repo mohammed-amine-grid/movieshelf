@@ -12,6 +12,7 @@ import { selectMovie } from '../features/movieinfo/movieinfoSlice';
 const dispatch = useDispatch();
 
 const handleSelect = () => {
+   
     dispatch(selectMovie(movie))
 }
 
