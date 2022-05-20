@@ -8,7 +8,8 @@ import  {FcBookmark} from 'react-icons/fc'
     <div className='movie-details-wrapper'>
         <h3>Titlte</h3>
         <div className='movie-details-trailer'>
-        <iframe title='me' src="https://www.imdb.com/video/imdb/vi1462938649/imdb/embed?autoplay=false"  allowFullScreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameBorder="no" width='1024'   scrolling="no"></iframe>        
+        {/* <iframe title='me' src="https://www.imdb.com/video/imdb/vi1462938649/imdb/embed?autoplay=false"  allowFullScreen={true} mozallowfullscreen="true" webkitallowfullscreen="true" frameBorder="no" width='1024'   scrolling="no"></iframe>         */}
+        wassup
         </div >
 
         <div className='movie-details-score-action'>
