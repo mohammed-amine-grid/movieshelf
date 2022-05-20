@@ -12,20 +12,25 @@ const getMovieGenres = async () => {
 
 
 const getMovieInfo =  async (id) => {
-    const response = await axios.get(`${MOVIE_DETAILS_ENDPOINT}${id}${API_URL}`);
-    return response.data; 
+    let movieInfo = {};
+    const infoResponse = await axios.get(`${MOVIE_DETAILS_ENDPOINT}${id}${API_URL}`);
+    const trailerResponse = await axios.get(`${MOVIE_DETAILS_ENDPOINT}${id}/videos${API_URL}`);
+    const ytTrailerKey = trailerResponse.data.results[0].key
+
+
+    const {title, genres, overview, runtime, vote_average} = infoResponse.data;
+     movieInfo = {
+        title, genres, overview, runtime, vote_average, ytTrailerKey
+    }
+    return movieInfo; 
+    
 }
 
 
-const getMovieTrailer = async (id) => {
-    const response = await axios.get(`${MOVIE_DETAILS_ENDPOINT}${id}/videos${API_URL}`);
-    return response.data.results;
-}
 
 const movieinfoService = {
     getMovieGenres,
     getMovieInfo,
-    getMovieTrailer
 }
 
 export default movieinfoService;

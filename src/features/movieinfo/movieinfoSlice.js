@@ -28,22 +28,13 @@ export const getInfo = createAsyncThunk('get-movie-info', async(id, thunkApi) =>
     }
 })
 
-export const getMovieTrailer = createAsyncThunk('get-movie-trailer', async(id, thunkApi) => {
-    try {
-        return await movieinfoService.getMovieTrailer(id);
-    }
-    catch(error) {
-        const message = error;
-        return thunkApi.rejectWithValue(message.response);
-    }
-})
+
 
 const initialState = {
     movieInfo : {},
     movieId: null,
     movieGenresIds: [],
-    movieTrailer: '',
-    genres : [],
+    genres: [],
     isMovieSelected: false,
     movieGenreNames :[],
     
@@ -63,7 +54,6 @@ export const movieInfo = createSlice({
             state.isMovieSelected = false;
             state.movieInfo = {};
             state.movieId = null;
-            state.movieTrailer = '';
             state.movieGenresIds = [];
         }
     },
@@ -91,23 +81,11 @@ export const movieInfo = createSlice({
                 state.movieInfo = action.payload;
                 state.movieGenreNames = sortMovieGenres(state.genres, state.movieGenresIds);
 
-
         })
         .addCase(getInfo.rejected, (state) => {
                 console.log("info-rejected");
         })
-        .addCase(getMovieTrailer.pending, (state) => {
-                console.log("trailer-pending");
-        })
-        .addCase(getMovieTrailer.fulfilled, (state, action) => {
-                console.log("trailer-success");
-                state.movieTrailer = action.payload[0].key;
-                console.log("trailer>>>", state.movieTrailer);
-
-        })
-        .addCase(getMovieTrailer.rejected, (state) => {
-                console.log("trailer-rejected");
-        })
+       
         
         
     }
