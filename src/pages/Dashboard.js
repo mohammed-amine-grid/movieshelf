@@ -1,39 +1,37 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import {search, searchMovies} from '../features/searchMovie/searchSlice'
-import MovieCard from '../components/MovieCard';
+import { useSelector } from "react-redux";
 import './dashboard.css';
-import {useDebouncedCallback} from 'use-debounce';
 import MovieDetails from './MovieDetails';
 import MovieCardList  from '../components/MovieCardList';
+import SearchInput from '../components/SearchInput';
+
+
+
 
 const Dashboard = () => {
-    const searchInput = useSelector((state) => state.search.searchInput);
+
+
+    const isMovieSelected = useSelector((state) => state.select.isMovieSelected);
+
     const movies = useSelector((state) => state.search.movies);
     
-    const dispatch = useDispatch();
-    const debouncedSearch = useDebouncedCallback((value) => {dispatch(searchMovies(value))}, 1000)
-
-    const handleSearch = (event) => {
-        dispatch(search(event.target.value));
-        debouncedSearch(searchInput);
-    }
-
-
     return (
     <div className='dashboard'>
 
-        {/* <MovieDetails /> */}
+        { <SearchInput />}
+
+       {!isMovieSelected && movies &&
+       <MovieCardList movies={movies} />}
+
+
+        {isMovieSelected && <MovieDetails />}
 
         {/* input-view */}
-        <input value={searchInput} onChange={handleSearch} placeholder='Search for a movie...' className='search-box' type="text"  />
      
 
-      
+        
 
-       { movies &&
        
-       <MovieCardList movies={movies} />}
         {/* </div> */}
     </div>
   )

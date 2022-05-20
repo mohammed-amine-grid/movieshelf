@@ -5,6 +5,7 @@ import searchService from "./searchService";
 const initialState = {
     searchInput: '',
     movies: [],
+
 };
 
 
@@ -31,6 +32,7 @@ export const searchSlice = createSlice({
         builder
         .addCase(searchMovies.pending, (state) => {
             console.log("pending");
+            
         })
         .addCase(searchMovies.fulfilled, (state, action) => {
             console.log("success");
@@ -39,6 +41,7 @@ export const searchSlice = createSlice({
         })
         .addCase(searchMovies.rejected, (state) => {
             console.log("rejected");
+            
         })
     }
     

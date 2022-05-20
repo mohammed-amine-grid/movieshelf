@@ -7,6 +7,7 @@ const initialState = {
     movieId: null,
     movieGenres: [],
     movieTrailer: '',
+    isMovieSelected: false,
 }
 
 export const movieInfo = createSlice({
@@ -15,14 +16,23 @@ export const movieInfo = createSlice({
     reducers: {
         selectMovie: (state, action) => {
             state.movieId = action.payload.id;
-            console.log(state.movieId);
+            state.movieGenres = action.payload.genre_ids;
+            state.isMovieSelected = true;
+        },
+        reset: (state) => {
+            state.isMovieSelected = false;
+            state.movieInfo = {};
+            state.movieId = null;
+            state.movieTrailer = '';
+            state.movieGenres = [];
         }
     },
+   
     
 });
 
 
-export const {selectMovie} = movieInfo.actions;
+export const {selectMovie, reset} = movieInfo.actions;
 export default movieInfo.reducer;
 
 
