@@ -4,7 +4,8 @@ const dotenv = require('dotenv').config();
 // import db here
 const connectDB = require('./config/db');
 const colors = require('colors');
-
+const {errorHandler} = require('./middleware/errorMiddleware');
+// console.log(`${errorHandler}`.red.underline);
 
 const port = process.env.PORT || 500;
 
@@ -18,7 +19,7 @@ connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-// app.use(errorHandler);
+app.use(errorHandler);
 
 
 
