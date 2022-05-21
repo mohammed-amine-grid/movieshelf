@@ -12,79 +12,49 @@ const getMovies = asyncHandler(async (req, res) => {
 })
 
 
-const setGoal = asyncHandler(async (req, res) => {
+const addMovie = asyncHandler(async (req, res) => {
   if (!req.body.text) {
     res.status(400)
     throw new Error('Please add a text field')
   }
 
-  const goal = await Goal.create({
-    text: req.body.text,
-    user: req.user.id,
+  const movie = await Movie.create({
+    ...req.body
   })
 
-  res.status(200).json(goal)
+  res.status(200).json(movie)
 })
 
 
-const updateGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id)
 
-  if (!goal) {
+
+const deleteMovie = asyncHandler(async (req, res) => {
+  const movie = await Movie.findById(req.params.id)
+
+  if (!movie) {
     res.status(400)
-    throw new Error('Goal not found')
+    throw new Error('Movie not found')
   }
 
-  // Check for user
+ 
   if (!req.user) {
     res.status(401)
     throw new Error('User not found')
   }
 
-  // Make sure the logged in user matches the goal user
-  if (goal.user.toString() !== req.user.id) {
+ 
+  if (movie.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error('User not authorized')
   }
 
-  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  })
-
-  res.status(200).json(updatedGoal)
-})
-
-// @desc    Delete goal
-// @route   DELETE /api/goals/:id
-// @access  Private
-const deleteGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id)
-
-  if (!goal) {
-    res.status(400)
-    throw new Error('Goal not found')
-  }
-
-  // Check for user
-  if (!req.user) {
-    res.status(401)
-    throw new Error('User not found')
-  }
-
-  // Make sure the logged in user matches the goal user
-  if (goal.user.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error('User not authorized')
-  }
-
-  await goal.remove()
+  await movie.remove()
 
   res.status(200).json({ id: req.params.id })
 })
 
 module.exports = {
-  getGoals,
-  setGoal,
-  updateGoal,
-  deleteGoal,
+ getMovies,
+ addMovie,
+ deleteMovie
 }
