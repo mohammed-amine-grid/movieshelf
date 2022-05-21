@@ -1,20 +1,35 @@
 const mongoose = require('mongoose')
 
-const goalSchema = mongoose.Schema(
+const movieSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'User',
     },
-    text: {
+    title: {
       type: String,
-      required: [true, 'Please add a text value'],
     },
+    genres: 
+    {
+       type: Array,
+    },
+    overview: {
+        type: String,
+    },
+    runtime: {
+        type: Number,
+    },
+    vote_average: {
+        type: Number,
+    },
+    ytTrailerKey: {
+        type: String,
+    }
   },
   {
     timestamps: true,
   }
 )
 
-module.exports = mongoose.model('Movie', goalSchema)
+module.exports = mongoose.model('Movie', movieSchema)
