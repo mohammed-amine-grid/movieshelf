@@ -1,17 +1,14 @@
+const path = require('path');
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv').config();
-// import db here
-const connectDB = require('./config/db');
 const colors = require('colors');
+const dotenv = require('dotenv').config();
+const connectDB = require('./config/db');
 const {errorHandler} = require('./middleware/errorMiddleware');
+
 // console.log(`${errorHandler}`.red.underline);
 
-const port = process.env.PORT || 500;
-
-
-
-
+const port = process.env.PORT || 5000;
 
 // connect db here 
 connectDB();
@@ -20,6 +17,8 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(errorHandler);
+app.use('/api/movies', require('./routes/movieRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 
 
@@ -28,6 +27,7 @@ app.use(errorHandler);
 // set up routes here
 
 // app.use('/api/watchlist');
+
 
 
 // set up dep here
