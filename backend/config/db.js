@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-console.log(`HERE ${process.env.DB_URI}`.bgMagenta);
 
 const connectDB = async () => {
   try {

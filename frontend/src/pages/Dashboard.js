@@ -5,6 +5,7 @@ import MovieDetails from './MovieDetails';
 import MovieCardList  from '../components/MovieCardList';
 import SearchInput from '../components/SearchInput';
 import { getGenres } from '../features/movieinfo/movieinfoSlice';
+import WatchlistCard from '../components/WatchlistCard';
 
 
 
@@ -23,13 +24,14 @@ const Dashboard = () => {
     return (
     <div className='dashboard'>
 
-        <SearchInput />
+        {/* <SearchInput />
 
        {!isMovieSelected && movies &&
        <MovieCardList movies={movies} />}
 
 
-        {isMovieSelected && <MovieDetails id={selectedMovieId} />}
+        {isMovieSelected && <MovieDetails id={selectedMovieId} />} */}
+        <WatchlistCard />
 
         
     </div>

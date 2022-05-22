@@ -28,12 +28,12 @@ li {
   line-height: 2.2;
 }
 
-h1,
+/* h1,
 h2,
 h3 {
   font-weight: 600;
   margin-bottom: 10px;
-}
+} */
 
 .container {
   width: 100%;

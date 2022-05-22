@@ -6,20 +6,25 @@ const User = require('../models/userModel');
 
 
 const getMovies = asyncHandler(async (req, res) => {
+  console.log(`user id ${req.user.id}`.bgGreen);
   const movies = await Movie.find({ user: req.user.id })
 
-  res.status(200).json(movies)
+  res.status(200).json(movies);
 })
 
 
 const addMovie = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+
+  console.log(`${req.body.movieInfo.title}`.bgRed);
+
+  if (!req.body.movieInfo) {
     res.status(400)
-    throw new Error('Please add a text field')
+    throw new Error('Please add movie information')
   }
 
   const movie = await Movie.create({
-    ...req.body
+    ...req.body.movieInfo,
+    user: req.user.id
   })
 
   res.status(200).json(movie)
