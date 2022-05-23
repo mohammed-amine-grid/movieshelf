@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import {ToastContainer} from 'react-toastify'
+import Watchlist from './pages/Watchlist'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Dashboard />} />
+            <Route path='/watchlist' element={<Watchlist/>} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
           </Routes>

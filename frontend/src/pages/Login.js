@@ -59,9 +59,8 @@ function Login() {
     <>
       <section className='heading'>
         <h1>
-          <FaSignInAlt /> Login
+          <FaSignInAlt /> 
         </h1>
-        <p>Login and start setting goals</p>
       </section>
 
       <section className='form'>
@@ -91,7 +90,7 @@ function Login() {
 
           <div className='form-group'>
             <button type='submit' className='btn btn-block'>
-              Submit
+              Login
             </button>
           </div>
         </form>

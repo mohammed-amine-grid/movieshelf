@@ -46,7 +46,7 @@ h3 {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-content: center;
   padding: 20px 0;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 60px;
@@ -58,8 +58,26 @@ h3 {
   justify-content: space-between;
 }
 
+
+header .logo {
+  padding-top: 10px;
+  line-height: 85%;
+  font-weight: 600;
+  transition: ease-in 0.2s;
+}
+
+header .logo:hover a {
+  color: #777;
+}
+
+
+
 .header ul li {
   margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .header ul li a {

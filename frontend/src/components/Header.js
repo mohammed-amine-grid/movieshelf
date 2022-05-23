@@ -1,8 +1,9 @@
 import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import {RiPlayList2Fill} from 'react-icons/ri'
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
-import { reset as resetMovie } from '../features/movieinfo/movieinfoSlice';
+import { reset as resetMovieInfo } from '../features/movieinfo/movieinfoSlice';
 
 function Header() {
   const navigate = useNavigate()
@@ -18,15 +19,22 @@ function Header() {
   return (
     <header className='header'>
       <div className='logo'>
-        <Link onClick={dispatch(resetMovie())} to='/'>MovieShelf</Link>
+        <Link onClick={()=> dispatch(resetMovieInfo())} to='/'>KinoList</Link>
       </div>
       <ul>
         {user ? (
+          <>
           <li>
-            <button className='btn' onClick={onLogout}>
-              <FaSignOutAlt /> Logout
+            <Link to='/watchlist' className='nav-btn'>
+              <RiPlayList2Fill  size={30} /> 
+            </Link>
+          </li>
+          <li>
+            <button className='nav-btn' onClick={onLogout}>
+              <FaSignOutAlt size={25} /> 
             </button>
           </li>
+          </>
         ) : (
           <>
             <li>

@@ -1,23 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import styled from 'styled-components'
+import WatchlistCard from '../components/WatchlistCard';
 
  const Watchlist = () => {
-    const [watchlist, setWatchlist] = useState([]);
-    useEffect(() => {
-    
-    }, [])
+   
 
     
 
 
-
+  
 
 
 
   return (
     <div >
-        
+        <WatchlistCard />
     </div>
   )
 }

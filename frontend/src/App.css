@@ -40,7 +40,7 @@ label{
 }
 input{
 	width: 60%;
-	height: 20px;
+	height: 40px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -49,8 +49,30 @@ input{
 	border: none;
 	outline: none;
 	border-radius: 5px;
+	background: none;
+	transition: ease-out .1s;
 }
-button{
+
+input:focus {
+	outline: 2px solid #777;
+	border: none;
+}
+
+.nav-btn {
+	background: none;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	transition: ease-out 0.4s;
+	margin-left: 10px;
+}
+
+.nav-btn:hover {
+	transform: scale(1.2);
+	color: #777;
+}
+
+/* button{
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -60,13 +82,12 @@ button{
 	background: #573b8a;
 	font-size: 1em;
 	font-weight: bold;
-	/* margin-top: 20px; */
 	outline: none;
 	border: none;
 	border-radius: 5px;
 	transition: .2s ease-in;
 	cursor: pointer;
-}
+} */
 
 .login{
 	height: 460px;
@@ -80,7 +101,7 @@ button{
 	transform: scale(.6);
 }
 
-#chk:checked ~ .login{
+/* #chk:checked ~ .login{
 	transform: translateY(-500px);
 }
 #chk:checked ~ .login label{
@@ -88,4 +109,4 @@ button{
 }
 #chk:checked ~ .signup label{
 	transform: scale(.6);
-}
+} */

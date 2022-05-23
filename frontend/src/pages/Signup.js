@@ -119,7 +119,7 @@ function Signup() {
           </div>
           <div className='form-group'>
             <button type='submit' className='btn btn-block'>
-              Submit
+              Signup
             </button>
           </div>
         </form>
