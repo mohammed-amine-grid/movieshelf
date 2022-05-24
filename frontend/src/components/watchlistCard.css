@@ -10,19 +10,8 @@
 .movie-card {
     border-radius: 8px;
     display: flex;
-    /* align-items: stretch; */
-    /* flex-direction: row; */
-    /* justify-content: stretch; */
-    /* width: 50%; */
-    /* border-radius: 8px; */
-    /* width: 100%; */
 }
 
-/* 
-.movie-card-overlay {
-    display: flex;
-    flex-grow: 1;
-} */
 
 
 
@@ -76,6 +65,23 @@
     padding: 5px;
 }
 
+
+.movie-card-info-score-runtime {
+    text-align: left;
+    margin-bottom: 10px;
+    color: goldenrod;
+} 
+
+.movie-card-info-score-runtime span{
+    font-size: 10px;
+    border: 1px solid #fff;
+    padding: 5px;
+    margin-right: 5px;
+    
+
+}
+
+
 .movie-card-info p {
     font-size: 13px;
     text-align: left;
@@ -85,12 +91,25 @@
     display: flex;
     justify-content: flex-end;
     font-size: 13px;
+    padding: 10px;
 }
 
 
+.play-btn  {
+    /* display: block; */
+    position: relative;
+    /* left: 41%; */
+    top: 55%;
 
+;
+   
+    cursor: pointer;
+    transition: ease-in 0.2s;
+}
 
-
+.play-btn:hover {
+    transform: scale(1.2);
+}
 
 .delete-movie-btn {
     color: crimson;
@@ -98,9 +117,9 @@
     background: transparent;
     transition: ease-in 1s;
     padding: 10px;
-    width: 20%;
     transition: ease-in 0.2s;
     cursor: pointer;
+    font-weight: 600;
 
 }
 
@@ -136,7 +155,7 @@
         justify-content: space-around;
     }
     .movie-card-info-title {
-        font-size: 48px;
+        font-size: 38px;
     }
     .movie-card-info-genre {
         font-size: 14px;

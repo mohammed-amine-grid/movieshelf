@@ -1,35 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './watchlistCard.css';
-import {TiDeleteOutline} from 'react-icons/ti'
+import {BsFillPlayCircleFill} from 'react-icons/bs';
+import {durationConvert} from '../utils/durationConvert'
 
-const WatchlistCard = ({movie}) => {
+const WatchlistCard = ({movie, add}) => {
 
-console.log(movie);
-
+  const [watchTrailer, setWatchTrailer] = useState(false);
 
   return (
       <div className='movie-card-container'>
     <div className='movie-card'>
     <div className='movie-card-overlay'>
         <div className='movie-card-poster-container'>
-            <img className='movie-card-poster' src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
-            {/* <iframe width="560" height="315" src={`https://www.youtube.com/embed/${movie.ytTrailerKey}`} title="YouTube video player" frameBorder="0"  allowFullScreen></iframe> */}
+
+            {!watchTrailer ? <><img className='movie-card-poster' src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
+
+            <BsFillPlayCircleFill onClick={() => setWatchTrailer(true)} className='play-btn' color='#FF0000' size={60}/>
+            </>
+            :
+             <iframe width="560" height="315" src={`https://www.youtube.com/embed/${movie.ytTrailerKey}`} title="YouTube video player" frameBorder="0"  allowFullScreen></iframe>}
+
         </div>
 
         <div className='movie-card-info'>
          
             <h2 className='movie-card-info-title'>{movie.title}</h2>
             <div className="movie-card-info-genre-container">
-              {movie.genres.map(genre => <>
+              {movie.genres ? movie.genres.map(genre => 
                 <span key={genre.id} className='movie-card-info-genre'>{genre.name}</span>
-              </>) }
+              ) : undefined }
               
             </div>
-            <p>Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown. accidentally  </p>
+            <div className='movie-card-info-score-runtime'>
+            <span>IMDB {movie.vote_average}</span>
+            <span>{durationConvert(movie.runtime)}</span>
+
+            </div>
+            <p>{movie.overview}</p>
 
             <div className='movie-card-actions'>
-            {/* <button className='watch-trailer-btn'>Watch Trailer</button> */}
-            <button className='delete-movie-btn'>Remove</button>
+            {add ? <button className='delete-movie-btn'>Remove</button> :
+           <button className='add-movie-btn'>Add to watchlist</button> }
+
             </div>
         </div>
         

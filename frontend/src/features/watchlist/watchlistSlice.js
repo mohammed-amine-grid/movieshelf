@@ -52,11 +52,7 @@ export const watchlist = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(getWatchList.pending, (state) => {
-            console.log('pending');
-        })
         .addCase(getWatchList.fulfilled, (state, action) => {
-            console.log("success watchlist");
             state.watchlist = action.payload;
             
         })

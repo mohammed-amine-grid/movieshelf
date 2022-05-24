@@ -3,9 +3,8 @@ import './movieDetails.css';
 import  {FcBookmark} from 'react-icons/fc'
 import { useSelector, useDispatch } from 'react-redux';
 import { getInfo } from '../features/movieinfo/movieinfoSlice';
-import { durationConvert } from '../utils/durationConvert';
-import { addToWatchlist } from '../features/watchlist/watchlistSlice';
-
+import { addToWatchlist, getWatchList } from '../features/watchlist/watchlistSlice';
+import WatchlistCard from '../components/WatchlistCard';
 
 
  const MovieDetails = ({id}) => {
@@ -14,17 +13,20 @@ import { addToWatchlist } from '../features/watchlist/watchlistSlice';
  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getInfo(id))
+    dispatch(getInfo(id));
+    dispatch(getWatchList());
   },[dispatch, id])
 
+
+
+
   const movieInfo = useSelector((state) => state.select.movieInfo);
-  const movieGenres = useSelector((state) => state.select.movieGenreNames)
-
-
+  const watchlist = useSelector(state => state.watchlist.watchlist)
+  console.log(watchlist);
 
   return (
     <div className='movie-details-wrapper'>
-        <h3>{movieInfo.title}</h3>
+        {/* <h3>{movieInfo.title}</h3>
         <div className='movie-details-trailer'>
         <iframe title='me' src={`https://www.youtube.com/embed/${movieInfo.ytTrailerKey}`}  allowFullScreen={true} mozallowfullscreen="true" webkitallowfullscreen="true" frameBorder="no"   scrolling="no"></iframe>        
         </div >
@@ -40,7 +42,8 @@ import { addToWatchlist } from '../features/watchlist/watchlistSlice';
 
         <span  onClick={() => dispatch(addToWatchlist())} className='movie-details-add-fav'><FcBookmark  size={30} /></span>
 
-        <p className='movie-details-overview'>{movieInfo.overview}</p>
+        <p className='movie-details-overview'>{movieInfo.overview}</p> */}
+        <WatchlistCard add={true} movie={movieInfo} />
 
     </div>
   )

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import WatchlistCard from '../components/WatchlistCard';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector, useDispatch, shallowEqual} from 'react-redux';
 import { getWatchList
  } from '../features/watchlist/watchlistSlice';
 
@@ -9,29 +9,29 @@ import { getWatchList
 
 
  const Watchlist = () => {
-  const watchlist = useSelector(state => state.watchlist.watchlist)
-  const dispatch = useDispatch();
-  const user = useSelector((state) => 
-  state.auth.user
-  )
-  
- 
-
-  useEffect(()=> {
-    if(watchlist.length) return;
+   const dispatch = useDispatch();
+   const user = useSelector((state) => 
+   state.auth.user
+   )
+   
+   const watchlist = useSelector((state) => state.watchlist.watchlist, shallowEqual);
+   
+   
+   useEffect(()=> {
+    
     if(user) {
      dispatch(getWatchList());
     }
     
-  }, [watchlist])
+  }, [ dispatch, user])
   
   
   return (
     <div>
-        {watchlist.length  ? watchlist.map((movie, i) => (<>
+        {watchlist.length  ? watchlist.map((movie, i) => (
         <WatchlistCard key={movie.id}  movie={movie}  />
         
-        </>)) : undefined}
+        )) : undefined}
     </div>
   )
 }
