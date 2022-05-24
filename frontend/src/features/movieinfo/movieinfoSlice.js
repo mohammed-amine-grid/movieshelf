@@ -4,7 +4,7 @@ import { sortMovieGenres } from "../../utils/sortMovieGenres";
 
 
 
-export const getGenres = createAsyncThunk('get-genres', async(state, thunkApi) => {
+export const getGenres = createAsyncThunk('get-genres', async(_, thunkApi) => {
     try {
         return await movieinfoService.getMovieGenres();
         

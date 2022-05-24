@@ -93,18 +93,20 @@
 
 
 .delete-movie-btn {
+    color: crimson;
+    border: 2px solid crimson;
     background: transparent;
-    /* width: 40%; */
     transition: ease-in 1s;
-    position: relative;
-    border: 0;
-    
+    padding: 10px;
+    width: 20%;
+    transition: ease-in 0.2s;
+    cursor: pointer;
 
 }
 
 .delete-movie-btn:hover  {
-    transform: rotate(180deg);
-    transform-origin: center;
+    background-color: crimson;
+    color: #fff;
 
 }
 

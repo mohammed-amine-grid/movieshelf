@@ -4,10 +4,16 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
-import {ToastContainer} from 'react-toastify'
-import Watchlist from './pages/Watchlist'
+import {ToastContainer} from 'react-toastify';
+import Watchlist from './pages/Watchlist';
+
+
 
 function App() {
+ 
+
+
+
   return (
 
     <>
@@ -23,6 +29,7 @@ function App() {
         </div>
       </Router>
       <ToastContainer />
+      
     </>
   );
 }

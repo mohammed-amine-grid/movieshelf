@@ -9,7 +9,7 @@ const {
 const { protect } = require('../middleware/authMiddleware')
 
 router.route('/watchlist').get(protect, getMovies);
-router.route('/add-watchlist').post(protect, addMovie);
-router.route('watchlist/:id').delete(protect, deleteMovie);
+router.route('/watchlist/add').post(protect, addMovie);
+router.route('watchlist/delete/:id').delete(protect, deleteMovie);
 
 module.exports = router

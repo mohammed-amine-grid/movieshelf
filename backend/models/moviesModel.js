@@ -7,12 +7,18 @@ const movieSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    id: {
+      type: Number
+    },
     title: {
       type: String,
     },
     genres: 
     {
        type: Array,
+    },
+    poster_path: {
+      type: String
     },
     overview: {
         type: String,

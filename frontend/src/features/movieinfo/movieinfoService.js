@@ -18,9 +18,9 @@ const getMovieInfo =  async (id) => {
     const ytTrailerKey = trailerResponse.data.results[0].key
 
 
-    const {title, genres, overview, runtime, vote_average} = infoResponse.data;
+    const { title, genres, poster_path,overview, runtime, vote_average} = infoResponse.data;
      movieInfo = {
-        title, genres, overview, runtime, vote_average, ytTrailerKey
+        id,title, genres, poster_path, overview, runtime, vote_average, ytTrailerKey
     }
     return movieInfo; 
     

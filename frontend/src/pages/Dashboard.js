@@ -5,6 +5,7 @@ import MovieDetails from './MovieDetails';
 import MovieCardList  from '../components/MovieCardList';
 import SearchInput from '../components/SearchInput';
 import { getGenres } from '../features/movieinfo/movieinfoSlice';
+import { getLatestMovies } from '../features/searchMovie/searchSlice';
 
 
 
@@ -12,7 +13,8 @@ import { getGenres } from '../features/movieinfo/movieinfoSlice';
 const Dashboard = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-      dispatch(getGenres())
+      dispatch(getGenres());
+      dispatch(getLatestMovies())
     }, [dispatch]);
 
     const isMovieSelected = useSelector((state) => state.select.isMovieSelected);

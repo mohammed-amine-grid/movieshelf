@@ -4,13 +4,14 @@ import  {FcBookmark} from 'react-icons/fc'
 import { useSelector, useDispatch } from 'react-redux';
 import { getInfo } from '../features/movieinfo/movieinfoSlice';
 import { durationConvert } from '../utils/durationConvert';
+import { addToWatchlist } from '../features/watchlist/watchlistSlice';
 
 
 
  const MovieDetails = ({id}) => {
 
 
-  const dispatch = useDispatch();
+ const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getInfo(id))
@@ -30,11 +31,16 @@ import { durationConvert } from '../utils/durationConvert';
 
         <div className='movie-details-score-action'>
             <span className='movie-details-score'>{movieInfo.vote_average} /10</span>
-            <span className='movie-details-add-fav'><FcBookmark size={30} /></span>
             <span>{durationConvert(movieInfo.runtime)}</span>
         </div>
+
+        <div className='movie-details-genres'>
         {movieGenres.map((genre, i) => <span key={i}>{genre}</span>)}
-        <p>{movieInfo.overview}</p>
+        </div>
+
+        <span  onClick={() => dispatch(addToWatchlist())} className='movie-details-add-fav'><FcBookmark  size={30} /></span>
+
+        <p className='movie-details-overview'>{movieInfo.overview}</p>
 
     </div>
   )

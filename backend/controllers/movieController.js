@@ -6,24 +6,30 @@ const User = require('../models/userModel');
 
 
 const getMovies = asyncHandler(async (req, res) => {
-  console.log(`user id ${req.user.id}`.bgGreen);
   const movies = await Movie.find({ user: req.user.id })
-
   res.status(200).json(movies);
 })
 
 
 const addMovie = asyncHandler(async (req, res) => {
+  
+  console.log(`${req.body}`.bgGreen);
+  
 
-  console.log(`${req.body.movieInfo.title}`.bgRed);
-
-  if (!req.body.movieInfo) {
+  if (!req.body) {
     res.status(400)
     throw new Error('Please add movie information')
   }
 
   const movie = await Movie.create({
-    ...req.body.movieInfo,
+    id: req.body.id,
+    title: req.body.title,
+    genres: req.body.genres,
+    poster_path: req.body.poster_path,
+    overview: req.body.overview,
+    runtime: req.body.runtime,
+    vote_average: req.body.vote_average,
+    ytTrailerKey: req.body.ytTrailerKey,
     user: req.user.id
   })
 

@@ -20,6 +20,18 @@ export const searchMovies = createAsyncThunk('search', async (searchInput, thunk
 })
 
 
+export const getLatestMovies = createAsyncThunk('get-latest-movies',  async (state, thunkApi) => {
+    try {
+        return await searchService.getLatestMovies();
+    }
+    
+    catch(error) {
+        const message = error.response;
+        return thunkApi.rejectWithValue(message)
+    }
+})
+
+
 
 export const searchSlice = createSlice({
     name: 'searchInput',
@@ -30,6 +42,20 @@ export const searchSlice = createSlice({
     }},
     extraReducers: (builder) => {
         builder
+        .addCase(getLatestMovies.pending, (state) => {
+            console.log("pending");
+            
+        })
+        .addCase(getLatestMovies.fulfilled, (state, action) => {
+            console.log("success");
+            state.movies = action.payload;
+            // console.log(state.movies);
+        })
+        .addCase(getLatestMovies.rejected, (state) => {
+            // console.log(state);
+            console.log("rejected");
+            
+        })
         .addCase(searchMovies.pending, (state) => {
             console.log("pending");
             
@@ -37,10 +63,8 @@ export const searchSlice = createSlice({
         .addCase(searchMovies.fulfilled, (state, action) => {
             console.log("success");
             state.movies = action.payload;
-            // console.log(state.movies);
         })
         .addCase(searchMovies.rejected, (state) => {
-            console.log("rejected");
             
         })
     }

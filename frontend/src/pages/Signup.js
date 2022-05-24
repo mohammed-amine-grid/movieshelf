@@ -19,13 +19,13 @@ function Signup() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isLoading, isError, isSuccess, errMessage } = useSelector(
     (state) => state.auth
   )
 
   useEffect(() => {
     if (isError) {
-      toast.error(message)
+      toast.error(errMessage)
     }
 
     if (isSuccess || user) {
@@ -33,7 +33,7 @@ function Signup() {
     }
 
     dispatch(reset())
-  }, [user, isError, isSuccess, message, navigate, dispatch])
+  }, [user, isError, isSuccess, errMessage, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({

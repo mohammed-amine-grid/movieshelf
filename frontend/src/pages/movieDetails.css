@@ -1,28 +1,43 @@
 
 .movie-details-wrapper {
-    /* position: relative; */
+    margin-top: 20px;
     display: flex;
+
     flex-direction: column;
     align-content: center;
     width: 100%;
+    padding: 5px;
+    border: 2px solid #777;
+    border-radius: 8px;
     
 }
 
 .movie-details-trailer {
-    position: relative;
+  position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
 }
 
 
 .movie-details-trailer iframe {
-    position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
 
+.movie-details-genres {
+  display: flex;
+  /* background-color: red; */
+  color: #777;
+  font-size: 13px;
+
+}
+
+.movie-details-genres span {
+  margin: 3px 5px 5px 0;
+}
 
 .movie-details-score-action {
     margin-top: 10px;
@@ -30,4 +45,14 @@
     justify-content: space-between;
 }
 
+.movie-details-overview {
+  font-size: 14px;
+  text-align: left;
+  color: #777;
+}
+
+.movie-details-add-fav {
+  text-align: right;
+  cursor: pointer;
+}
 
