@@ -37,6 +37,7 @@ const initialState = {
     genres: [],
     isMovieSelected: false,
     movieGenreNames :[],
+    isLoading: false,
     
 }
 
@@ -61,29 +62,26 @@ export const movieInfo = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getGenres.pending, (state) => {
-            console.log("pending");
             
         })
         .addCase(getGenres.fulfilled, (state, action) => {
-            console.log("success");
             state.genres = action.payload;
 
         })
         .addCase(getGenres.rejected, (state) => {
-            console.log("rejected");
             
         })
         .addCase(getInfo.pending, (state) => {
-                console.log("info-pending");
+                state.isLoading = true;
         })
         .addCase(getInfo.fulfilled, (state, action) => {
-                console.log("info-success");
                 state.movieInfo = action.payload;
                 state.movieGenreNames = sortMovieGenres(state.genres, state.movieGenresIds);
+                state.isLoading = false;
 
         })
         .addCase(getInfo.rejected, (state) => {
-                console.log("info-rejected");
+                state.isLoading = false;
         })
        
         

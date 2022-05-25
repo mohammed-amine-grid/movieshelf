@@ -15,6 +15,8 @@ import { getWatchList
    )
    
    const watchlist = useSelector((state) => state.watchlist.watchlist, shallowEqual);
+
+   
    
    
    useEffect(()=> {
@@ -23,13 +25,13 @@ import { getWatchList
      dispatch(getWatchList());
     }
     
-  }, [ dispatch, user])
+  }, [dispatch, user])
   
   
   return (
     <div>
-        {watchlist.length  ? watchlist.map((movie, i) => (
-        <WatchlistCard key={movie.id}  movie={movie}  />
+        {watchlist.length  ? watchlist.map((movie) => (
+        <WatchlistCard removebtn={true} key={movie.id} addedToWatchlist={true} movie={movie}  />
         
         )) : undefined}
     </div>

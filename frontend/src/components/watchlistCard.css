@@ -99,9 +99,9 @@
     /* display: block; */
     position: relative;
     /* left: 41%; */
-    top: 55%;
+    top: -55%;
 
-;
+
    
     cursor: pointer;
     transition: ease-in 0.2s;
@@ -111,6 +111,23 @@
     transform: scale(1.2);
 }
 
+
+.add-movie-btn {
+    color: #fff;
+    border: 2px solid #fff;
+    background: transparent;
+    transition: ease-in 1s;
+    padding: 10px;
+    transition: ease-in 0.2s;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.add-movie-btn:hover  {
+    background-color: #fff;
+    color: #000;
+
+}
 .delete-movie-btn {
     color: crimson;
     border: 2px solid crimson;

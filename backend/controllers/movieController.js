@@ -40,6 +40,7 @@ const addMovie = asyncHandler(async (req, res) => {
 
 
 const deleteMovie = asyncHandler(async (req, res) => {
+  console.log(`${req.params.id}`.bgRed);
   const movie = await Movie.findById(req.params.id)
 
   if (!movie) {

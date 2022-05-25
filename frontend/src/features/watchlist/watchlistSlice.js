@@ -30,7 +30,6 @@ export const addToWatchlist = createAsyncThunk('add-watchlist', async(_, thunkAp
         return await watchlistService.addToWatchList(movieInfo ,token);
     }
     catch(error) {
-        console.log(error);
         const message =
         (error.response && error.response.data && error.response.data.message) ||
         error.message ||
@@ -40,7 +39,19 @@ export const addToWatchlist = createAsyncThunk('add-watchlist', async(_, thunkAp
 })
 
 
-
+export const deleteFromWatchlist = createAsyncThunk('delete-watchlist', async(id, thunkApi) => {
+    try {
+        const token = thunkApi.getState().auth.user.token;
+        return await watchlistService.deleteFromWatchlist(id, token);
+    }
+    catch(error) {
+        const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString()
+        return thunkApi.rejectWithValue(message)
+    }
+})
 
 export const watchlist = createSlice({
     name: 'watchlist',
@@ -66,13 +77,26 @@ export const watchlist = createSlice({
         })
         .addCase(addToWatchlist.fulfilled, (state) => {
             console.log("add-to-wh-success");
-            // state.genres = action.payload;
             
             
         })
         .addCase(addToWatchlist.rejected, (state) => {
-            // console.log(state);
             console.log("add-to-wh-rejected");
+            
+        })
+        .addCase(deleteFromWatchlist.pending, (state) => {
+            console.log("delete pending");
+            
+        })
+        .addCase(deleteFromWatchlist.fulfilled, (state, action) => {
+            console.log("delete success", action.payload);
+            
+
+            
+            
+        })
+        .addCase(deleteFromWatchlist.rejected, (state) => {
+            console.log("delete rejected");
             
         })
     }
