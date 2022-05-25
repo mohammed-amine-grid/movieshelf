@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 const WatchlistCard = ({movie, addedToWatchlist, removebtn}) => {
 
+  console.log(movie, "heheheheehhehehehehehehehehehehe");
   const [watchTrailer, setWatchTrailer] = useState(false);
   const dispatch = useDispatch();
 

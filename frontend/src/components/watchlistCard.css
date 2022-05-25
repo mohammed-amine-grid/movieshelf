@@ -14,6 +14,9 @@
 
 
 
+.movie-card-poster-container {
+    position: relative;
+}
 
 
 .movie-card-poster-container iframe {
@@ -34,7 +37,7 @@
 
 .movie-card-overlay {
     border-radius: 8px;
-    background: linear-gradient(to bottom, rgba(42, 159, 255, 0.2) 0%, #212120 60%, #212120 100%);
+    background: linear-gradient(to bottom, rgba(42, 159, 255, 0.2) 0%, #212120 50%, #212120 100%);
 }
 
 
@@ -96,13 +99,9 @@
 
 
 .play-btn  {
-    /* display: block; */
+    display: inline;
     position: relative;
-    /* left: 41%; */
-    top: -55%;
-
-
-   
+    top: -250px;
     cursor: pointer;
     transition: ease-in 0.2s;
 }
@@ -162,7 +161,6 @@
     .movie-card-overlay {
         display: flex;
         background: linear-gradient(to right, rgba(42, 159, 255, 0.2) 0%, #212120 50%, #212120 100%);
-        /* display: hidden; */
     }
 
     .movie-card-info  {
@@ -193,6 +191,9 @@
         height: 100%;
     }
 
+    .play-btn {
+        top: -60%
+    }
 
     
 }

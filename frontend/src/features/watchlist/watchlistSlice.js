@@ -90,10 +90,7 @@ export const watchlist = createSlice({
         })
         .addCase(deleteFromWatchlist.fulfilled, (state, action) => {
             console.log("delete success", action.payload);
-            
-
-            
-            
+            state.watchlist = state.watchlist.filter(movie => movie._id !== action.payload.id)
         })
         .addCase(deleteFromWatchlist.rejected, (state) => {
             console.log("delete rejected");
