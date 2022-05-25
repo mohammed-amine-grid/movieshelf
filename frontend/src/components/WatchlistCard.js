@@ -3,14 +3,15 @@ import './watchlistCard.css';
 import {BsFillPlayCircleFill} from 'react-icons/bs';
 import {durationConvert} from '../utils/durationConvert'
 import { addToWatchlist, deleteFromWatchlist } from '../features/watchlist/watchlistSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const WatchlistCard = ({movie, addedToWatchlist, removebtn}) => {
 
-  console.log(movie, "heheheheehhehehehehehehehehehehe");
   const [watchTrailer, setWatchTrailer] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector(state => state.auth.user)
+
 
   return (
       <div className='movie-card-container'>
@@ -45,8 +46,11 @@ const WatchlistCard = ({movie, addedToWatchlist, removebtn}) => {
 
             <div className='movie-card-actions'>
               {/* add button */}
-            {addedToWatchlist ? undefined :
+            {!user || addedToWatchlist ? undefined :
            <button onClick={() => dispatch(addToWatchlist())} className='add-movie-btn'>Add to watchlist</button> }
+
+            
+
 
             {/* delete button */}
               {removebtn ? <button onClick={() => dispatch(deleteFromWatchlist(movie._id))} className='delete-movie-btn'>Remove</button> : undefined}
