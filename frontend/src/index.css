@@ -28,12 +28,6 @@ li {
   line-height: 2.2;
 }
 
-/* h1,
-h2,
-h3 {
-  font-weight: 600;
-  margin-bottom: 10px;
-} */
 
 .container {
   width: 100%;
@@ -113,6 +107,44 @@ header .logo:hover a {
 .form-group {
   margin-bottom: 10px;
 }
+
+
+
+
+input{
+	width: 60%;
+	height: 40px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	background: none;
+	transition: ease-out .1s;
+}
+
+input:focus {
+	outline: 2px solid #777;
+	border: none;
+}
+
+.nav-btn {
+	background: none;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	transition: ease-out 0.4s;
+	margin-left: 10px;
+}
+
+.nav-btn:hover {
+	transform: scale(1.2);
+	color: #777;
+}
+
 
 
 

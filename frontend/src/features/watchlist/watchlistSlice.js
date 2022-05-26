@@ -4,6 +4,8 @@ import watchlistService from './watchlistService';
 
 const initialState = {
     watchlist: [],
+    errMessage: '',
+    isLoading: false,
 }
 
 export const getWatchList = createAsyncThunk('get-watchlist', async(_, thunkApi) => {
@@ -63,12 +65,20 @@ export const watchlist = createSlice({
     },
     extraReducers: (builder) => {
         builder
+        .addCase(getWatchList.pending, (state, action) => {
+            state.isLoading = true;
+            state.errMessage = '';
+            
+        })
         .addCase(getWatchList.fulfilled, (state, action) => {
             state.watchlist = action.payload;
+            state.isLoading = false;
+            state.errMessage =  '';
             
         })
         .addCase(getWatchList.rejected, (state, action) => {
-            console.log("rejected watchlist",action.payload);
+            state.errMessage = action.payload;
+            state.isLoading = false;
             
         })
         .addCase(addToWatchlist.pending, (state) => {

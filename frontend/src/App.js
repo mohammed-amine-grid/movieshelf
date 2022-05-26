@@ -1,4 +1,3 @@
-import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -6,7 +5,7 @@ import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import {ToastContainer} from 'react-toastify';
 import Watchlist from './pages/Watchlist';
-
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function App() {
