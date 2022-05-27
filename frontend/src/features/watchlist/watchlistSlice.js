@@ -6,6 +6,7 @@ const initialState = {
     watchlist: [],
     errMessage: '',
     isLoading: false,
+    addToWatchlist: false,
 }
 
 export const getWatchList = createAsyncThunk('get-watchlist', async(_, thunkApi) => {
@@ -29,6 +30,7 @@ export const addToWatchlist = createAsyncThunk('add-watchlist', async(_, thunkAp
     try {
         const token = thunkApi.getState().auth.user.token;
         const movieInfo = thunkApi.getState().select.movieInfo;
+        
         return await watchlistService.addToWatchList(movieInfo ,token);
     }
     catch(error) {

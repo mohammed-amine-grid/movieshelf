@@ -10,7 +10,13 @@ const WatchlistCard = ({movie, addedToWatchlist, removebtn}) => {
 
   const [watchTrailer, setWatchTrailer] = useState(false);
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user)
+  const user = useSelector(state => state.auth.user);
+  const [addedClick, setAddedClick] = useState(false);
+
+  const handleAddClick = () => {
+    dispatch(addToWatchlist());
+    setAddedClick(true);
+  }
 
 
   return (
@@ -47,7 +53,7 @@ const WatchlistCard = ({movie, addedToWatchlist, removebtn}) => {
             <div className='movie-card-actions'>
               {/* add button */}
             {!user || addedToWatchlist ? undefined :
-           <button onClick={() => dispatch(addToWatchlist())} className='add-movie-btn'>Add to watchlist</button> }
+           <button disabled={addedClick} onClick={handleAddClick} className='add-movie-btn'>Add to watchlist</button> }
 
             
 

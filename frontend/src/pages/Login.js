@@ -64,6 +64,11 @@ function Login() {
         </h1>
       </section>
 
+      <div>
+        email: test@test.com |
+        password: test123
+      </div>
+
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>

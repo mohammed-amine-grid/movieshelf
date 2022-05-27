@@ -12,7 +12,16 @@ import Spinner from '../components/Spinner';
 
  const dispatch = useDispatch();
 
+ const movieInfo = useSelector((state) => state.select.movieInfo);
+ const isLoading = useSelector(state => state.select.isLoading);
+ const watchlist = useSelector(state => state.watchlist.watchlist);
+
+ let addedToWatchlist =  watchlist.some(movie => movie.id === movieInfo.id);
+
+  
+ 
   useEffect(() => {
+
     dispatch(getInfo(id));
     dispatch(getWatchList());
   },[dispatch, id])
@@ -20,10 +29,7 @@ import Spinner from '../components/Spinner';
 
 
 
-  const movieInfo = useSelector((state) => state.select.movieInfo);
-  const isLoading = useSelector(state => state.select.isLoading);
-  const watchlist = useSelector(state => state.watchlist.watchlist)
-  let addedToWatchlist = watchlist.some(movie => movie.id === movieInfo.id);
+
 
   return (
     <div className='movie-details-wrapper'>
